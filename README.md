@@ -15,7 +15,7 @@ docker cp ~/.gitconfig python_app:/home/python/.gitconfig
 ```
 
 ```bash
-sudo chmod +x .docker/entrypoint.sh
+sudo chmod +x ./entrypoint.sh
 ```
 
 ```bash
