@@ -1,0 +1,7 @@
+-r testing.txt
+
+mypy
+flake8
+black
+isort
+pre-commit
