@@ -1,17 +1,10 @@
 # Base project to develop with python and docker
 
-## Commands inside the container:
+## Commands:
 
 ```bash
-pre-commit install -t pre-commit
-pre-commit install -t pre-push
+docker-compose up -d
 ```
-
-```bash
-chmod +x /.docker/entrypoint.sh
-```
-
-## Commands outside the container:
 
 ```bash
 docker cp ~/.ssh/id_rsa python_app:/home/python/.ssh/id_rsa
@@ -23,4 +16,9 @@ docker cp ~/.gitconfig python_app:/home/python/.gitconfig
 
 ```bash
 sudo chmod +x .docker/entrypoint.sh
+```
+
+```bash
+sudo chown -R $USER:$USER .dbdata/
+sudo chmod -R 755 .dbdata
 ```

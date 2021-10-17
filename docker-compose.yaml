@@ -5,9 +5,9 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        entrypoint: dockerize -wait tcp://db:5432 -timeout 20s ./.docker/entrypoint.sh
+        tty: true
         volumes:
-            - .:/app
+            - ./app:/app
         environment:
             - DB_HOST=db
             - DB_NAME=app
@@ -15,21 +15,6 @@ services:
             - DB_PASS=supersecretpassword
             - DEBUG=1
             - HOST=0.0.0.0
-        depends_on:
-            - db
-        networks:
-            - python-app-network
-    db:
-        container_name: postgres_db
-        image: postgres:13.2-alpine
-        environment:
-            - POSTGRES_DB=app
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=supersecretpassword
-        volumes:
-            - .docker/dbdata:/var/lib/postgresql/data
-        ports:
-            - 55432:5432
         networks:
             - python-app-network
 
