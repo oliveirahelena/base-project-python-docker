@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        entrypoint: dockerize -wait tcp://db:55432 -timeout 20s ./.docker/entrypoint.sh
+        entrypoint: dockerize -wait tcp://db:5432 -timeout 20s ./.docker/entrypoint.sh
         volumes:
             - .:/app
         environment:

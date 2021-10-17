@@ -29,21 +29,8 @@ WORKDIR /app
 # add app
 COPY . .
 
-# config pre-commit
-RUN pre-commit install -t pre-commit
-RUN pre-commit install -t pre-push
-
-# make entrypoint executable
-RUN chmod +x /.docker/entrypoint.sh
-
 # create and set a user
 RUN adduser --disabled-password --uid 1000 python
 USER python
 
-# config ssh
-COPY ~/ssh/ ~/ssh/
-
-# config git
-RUN rm ~/.gitconfig
-COPY ~/.gitconfig ~/.gitconfig
-
+RUN mkdir /home/python/.ssh
